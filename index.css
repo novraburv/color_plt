@@ -1,0 +1,35 @@
+* {
+  outline: red 0px dashed;
+}
+
+body {
+  height: 85vh;
+}
+form > * {
+  width: 250px;
+  text-align: center;
+}
+header {
+  text-align: center;
+}
+main {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  height: 100%;
+}
+[type=color] {
+  padding: 0;
+  border: 0;
+}
+
+/* class */
+.col-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.output {
+  gap: 0px;
+}
