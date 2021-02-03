@@ -23,17 +23,17 @@
                 <option value="auto">auto</option>
                 <option value="monochrome">monochrome</option>
                 <option value="analogous">analogous</option>
-                <option value="complimentary">complimentary</option>
-                <option value="split_complimentary">split-complimentary</option>
+                <option value="complementary">complementary</option>
+                <option value="split_complementary">split-complementary</option>
                 <option value="triangle">triangle</option>
                 <option value="tetradic">tetradic</option>
                 <option value="tetradic_square">tetradic-square</option>
             </select>
-            <button type="button" onclick="" id="button-gen">GENERATE</button>
+            <button type="button" onclick="printOutput(generateHues(hex2rgbhsl(document.getElementById('hex').value), document.getElementById('gen-methods').value))" id="button-gen">GENERATE</button>
             <button type="button" onclick="" id="button-rand">RANDOM</button>
         </form>
         <!--place where generated colors printed-->
-        <div class="output col-center" id="output">
+        <div class="output-container col-center" id="output-container">
             <h2>output</h2>
         </div>
     </main>

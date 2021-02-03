@@ -31,6 +31,10 @@ main {
   align-items: center;
   gap: 10px;
 }
-.output {
+.output-container {
   gap: 0px;
+}
+.output {
+  height: 100%;
+  width: 100%;
 }

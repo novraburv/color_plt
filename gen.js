@@ -57,3 +57,16 @@ function generateHues(colorCodes, method) {
 function random100() {
     return Math.floor(Math.random() * 100);
 }
+function printOutput(func) {
+    const output = document.getElementById('output-container');
+    let n = 1;
+    output.innerHTML = '<!--nothing to see-->';
+    func.genHues.map(x => {
+        const color = document.createElement('div');
+        color.setAttribute('class', 'output');
+        color.setAttribute('id', `color${n}`);
+        color.setAttribute('style', `background-color: hsl(${x}, ${random100()}%, ${random100()}%)`)
+        output.append(color);
+        n++
+    })
+}
