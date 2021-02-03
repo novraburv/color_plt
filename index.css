@@ -12,6 +12,7 @@
   --accent2: hsl(60, 15%, 13%);
 }
 body {
+  background-color: var(--dark-neu);
   color: var(--light-neu);
   font-family: Arial, Helvetica, sans-serif;
   height: 100vh;
@@ -24,8 +25,6 @@ form > * {
 }
 header {
   background-color: var(--dark-neu);
-  box-shadow: 1px 1px 5px 1px gray;
-  margin-bottom: 3px;
   padding: 1em;
   text-align: center;
 }
@@ -61,6 +60,17 @@ select:hover {
 .buttons:hover {
   background-color: var(--accent1);
 }
+.details {
+  font-size: 0.8em;
+}
+.details-hex {
+  font-size: 1em;
+  font-weight: bold;
+  transform: rotate(270deg);
+}
+.details-rgb, .details-hsl {
+  display: none;
+}
 .center {
   display: flex;
   justify-content: center;
@@ -69,11 +79,13 @@ select:hover {
 .form {
   flex-direction: column;
   gap: 10px;
-  grid-area: input;
   padding: 1em;
 }
+.form-container {
+  grid-area: input;
+  width: 100%;
+}
 .header_text {
-  font-variant: all-small-caps;
   margin: 0;
 }
 .output-container {
@@ -81,10 +93,20 @@ select:hover {
   grid-area: output;
 }
 .output {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   height: 100%;
   width: 100%;
 }
-@media (min-width: 667px) {
+@media (min-width: 768px) {
+  .details-hex {
+    transform: unset;
+  }
+  .details-rgb, .details-hsl {
+    display: block;
+  }
   .form {
     flex-direction: row;
   }

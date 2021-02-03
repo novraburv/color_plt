@@ -82,15 +82,14 @@ function printOutput(func) {
         /* write details to each panel */
         Object.keys(details).forEach(x => {
             const para = document.createElement('p');
-            para.setAttribute('class', `color_details color${n}_details`);
-            para.setAttribute('id', `color${n}-${x}`);
+            para.setAttribute('class', `details details_color${n} details-${x}`);
             para.innerText = details[x].toUpperCase();
             panel.append(para);
         })
         /* adjust details text color based on their background */
         const fg = details.hsl.match(/\d+/g)[2] < 50 ? 'var(--light-neu)' : 'var(--dark-neu)';
-        Object.keys(document.getElementsByClassName(`color${n}_details`)).forEach(x => {
-            document.getElementsByClassName(`color${n}_details`)[x].style.color = fg;
+        Object.keys(document.getElementsByClassName(`details_color${n}`)).forEach(x => {
+            document.getElementsByClassName(`details_color${n}`)[x].style.color = fg;
         })
         /* counter, put it on the end! */
         n++;
