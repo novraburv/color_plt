@@ -62,15 +62,37 @@ function printOutput(func) {
     const output = document.getElementById('output-container');
     let n = 1;
     output.innerHTML = '<!--area cleared-->';
-    func.genHues.map(x => {
-        /* creates divs with their respective id */
+    func.genHues.forEach(x => {
+        /* details object will be used later, to be shown in each panel */
+        const details = {'hex': '', 'rgb':'', 'hsl': `hsl(${x}, ${random100()}%, ${random100()}%)`}
+        /* create divs with their respective id */
         const color = document.createElement('div');
         color.setAttribute('class', 'output');
         color.setAttribute('id', `color${n}`);
         output.append(color);
         /* select each div and fill it with color */
-        const bg = document.getElementById(`color${n}`);
-        bg.style.backgroundColor = `hsl(${x}, ${random100()}%, ${random100()}%)`;
+        const panel = document.getElementById(`color${n}`);
+        panel.style.backgroundColor = `${details.hsl}`;
+        /* add hex and rgb codes to details */
+        details.rgb = panel.style.backgroundColor;
+        details.hex = details.rgb.match(/\d+/g).map(x => {
+            const string = Number(x).toString(16);
+            return string.length < 2 ? string + string : string;
+        }).reduce((a, b) => {return a + b},'#');
+        /* write details to each panel */
+        Object.keys(details).forEach(x => {
+            const para = document.createElement('p');
+            para.setAttribute('class', `color_details color${n}_details`);
+            para.setAttribute('id', `color${n}-${x}`);
+            para.innerText = details[x].toUpperCase();
+            panel.append(para);
+        })
+        /* adjust details text color based on their background */
+        const fg = details.hsl.match(/\d+/g)[2] < 50 ? 'var(--light-neu)' : 'var(--dark-neu)';
+        Object.keys(document.getElementsByClassName(`color${n}_details`)).forEach(x => {
+            document.getElementsByClassName(`color${n}_details`)[x].style.color = fg;
+        })
+        /* counter, put it on the end! */
         n++;
     })
 }
