@@ -1,40 +1,87 @@
 * {
-  outline: red 0px dashed;
+  outline: red 0px dashed; /* helps you to edit layout */
 }
-
+:root {
+  /* variables */
+  /* neu (neutral) is not necessarily black or white or brownies,
+  but darkest or lightest color. Something nearest to black and white */
+  --dark-neu: hsl(120, 65%, 6%);
+  --light-neu: hsl(120, 36%, 94%);
+  --accent0: hsl(120, 90%, 21%);
+  --accent1: hsl(120, 55%, 43%);
+  --accent2: hsl(120, 45%, 65%);
+}
 body {
+  color: var(--light-neu);
   font-family: Arial, Helvetica, sans-serif;
-  height: 85vh;
+  height: 100vh;
 }
 form > * {
-  width: 250px;
+  height: 2em;
+  max-width: 250px;
   text-align: center;
+  width: 100%;
 }
 header {
+  background-color: var(--dark-neu);
+  box-shadow: 1px 1px 5px 1px gray;
+  margin-bottom: 3px;
+  padding: 1em;
   text-align: center;
 }
 main {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas:
+    'output'
+    'input';
+  grid-template-rows: 1fr auto;
   height: 100%;
 }
+select {
+  background-color: var(--light-neu);
+  border: none;
+}
 [type=color] {
-  padding: 0;
   border: 0;
+  padding: 0;
 }
 
 /* class */
-.col-center {
+.buttons {
+  background-color: var(--accent0);
+  color: var(--light-neu);
+  font-weight: bold;
+  border: 0px;
+  border-radius: 50px;
+}
+.buttons:hover {
+  background-color: var(--dark-neu);
+}
+.center {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.form {
+  flex-direction: column;
   gap: 10px;
+  grid-area: input;
+  padding: 1em;
+}
+.header_text {
+  font-variant: all-small-caps;
+  margin: 0;
 }
 .output-container {
-  gap: 0px;
+  gap: 0;
+  grid-area: output;
 }
 .output {
   height: 100%;
   width: 100%;
+}
+@media (min-width: 667px) {
+  .form {
+    flex-direction: row;
+  }
 }

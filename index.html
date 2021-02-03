@@ -13,11 +13,11 @@
 
 <body>
     <header class="header">
-        <h1>// COLOR_SCH</h1>
+        <h1 class="header_text">//COLOR_PLT</h1>
     </header>
     <main class="main">
         <!--form to input base color and generation method-->
-        <form action="#" class="form col-center" id="color-form">
+        <form action="#" class="form center" id="color-form">
             <input type="color" name="hex" id="hex">
             <select name="gen-methods" id="gen-methods">
                 <option value="auto">auto</option>
@@ -29,11 +29,11 @@
                 <option value="tetradic">tetradic</option>
                 <option value="tetradic_square">tetradic-square</option>
             </select>
-            <button type="button" onclick="printOutput(generateHues(hex2rgbhsl(document.getElementById('hex').value), document.getElementById('gen-methods').value))" id="button-gen">GENERATE</button>
-            <button type="button" onclick="printOutput(generateHues({'hsl': [Math.round(Math.random() * 360)]}, 'auto'))" id="button-rand">RANDOM</button>
+            <button type="button" onclick="printOutput(generateHues(hex2rgbhsl(document.getElementById('hex').value), document.getElementById('gen-methods').value))" class="buttons" id="button-gen">GENERATE</button>
+            <button type="button" onclick="printOutput(generateHues({'hsl': [Math.round(Math.random() * 360)]}, 'auto'))" class="buttons" id="button-rand">RANDOM</button>
         </form>
         <!--place where generated colors printed-->
-        <div class="output-container col-center" id="output-container">
+        <div class="output-container center" id="output-container">
             <h2>output</h2>
         </div>
     </main>
