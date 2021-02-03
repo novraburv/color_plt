@@ -63,11 +63,14 @@ function printOutput(func) {
     let n = 1;
     output.innerHTML = '<!--area cleared-->';
     func.genHues.map(x => {
+        /* creates divs with their respective id */
         const color = document.createElement('div');
         color.setAttribute('class', 'output');
         color.setAttribute('id', `color${n}`);
-        color.setAttribute('style', `background-color: hsl(${x}, ${random100()}%, ${random100()}%)`)
         output.append(color);
-        n++
+        /* select each div and fill it with color */
+        const bg = document.getElementById(`color${n}`);
+        bg.style.backgroundColor = `hsl(${x}, ${random100()}%, ${random100()}%)`;
+        n++;
     })
 }
