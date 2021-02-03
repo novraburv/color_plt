@@ -1,4 +1,5 @@
-function colorsFromHex(hex) {
+/* hex2rgbhsl generates RGB and HSL value from hex */
+function hex2rgbhsl(hex) {
     const RGB = hex.match(/[a-f\d]{2}/ig).map(x => {return parseInt(x, 16)});
     const [r, g, b] = RGB.map(x => {return x / 255});
     const MAX = Math.max(r, g, b), MIN = Math.min(r, g, b);
@@ -22,7 +23,9 @@ function colorsFromHex(hex) {
         'hsl': HSL
     }
 }
-function generate(colorCodes, method) {
+/* generateHues generates random hues based on 2 parameters, i.e. HSL hue as the base hue and chosen method.
+The output is an object that contains color codes from colorCodes parameter, method used by this function and generated hues */
+function generateHues(colorCodes, method) {
     const METHODS = {
         monochrome: [0],
         analogous: [-60, 0, 60],
@@ -46,7 +49,11 @@ function generate(colorCodes, method) {
                 gHues.push(BASE + METHODS[m][randomIndex(METHODS[m])]);
             }
         }
-        return gHues.map(x => {return x < 0 ? x + 360 : x >= 360 ? x - 360 : x}) + m + BASE;
+        return gHues.map(x => {return x < 0 ? x + 360 : x >= 360 ? x - 360 : x});
     }
-    return method === 'auto' ? hues(BASE, KEYS[randomIndex(KEYS)]) : hues(BASE, method);
+    return {colorCodes, 'method': method, 'genHues': method === 'auto' ? hues(BASE, KEYS[randomIndex(KEYS)]) : hues(BASE, method)};
+}
+/* random100 generates random number between 0 - 100 */
+function random100() {
+    return Math.floor(Math.random() * 100);
 }
