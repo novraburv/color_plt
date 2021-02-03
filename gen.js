@@ -61,7 +61,7 @@ function random100() {
 function printOutput(func) {
     const output = document.getElementById('output-container');
     let n = 1;
-    output.innerHTML = '<!--nothing to see-->';
+    output.innerHTML = '<!--area cleared-->';
     func.genHues.map(x => {
         const color = document.createElement('div');
         color.setAttribute('class', 'output');
