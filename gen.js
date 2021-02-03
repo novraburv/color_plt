@@ -44,9 +44,9 @@ function generateHues(colorCodes, method) {
         const gHues = [];
         while (gHues.length < 5) {
             if (m === 'analogous') {
-                gHues.push(BASE + (Math.floor(Math.random() * (METHODS[m][2] - METHODS[m][0]) + METHODS[m][0])));
+                gHues.push(b + (Math.floor(Math.random() * (METHODS[m][2] - METHODS[m][0]) + METHODS[m][0])));
             } else {
-                gHues.push(BASE + METHODS[m][randomIndex(METHODS[m])]);
+                gHues.push(b + METHODS[m][randomIndex(METHODS[m])]);
             }
         }
         return gHues.map(x => {return x < 0 ? x + 360 : x >= 360 ? x - 360 : x});
