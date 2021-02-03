@@ -57,6 +57,7 @@ function generateHues(colorCodes, method) {
 function random100() {
     return Math.floor(Math.random() * 100);
 }
+/* its name explains */
 function printOutput(func) {
     const output = document.getElementById('output-container');
     let n = 1;

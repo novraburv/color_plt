@@ -30,7 +30,7 @@
                 <option value="tetradic_square">tetradic-square</option>
             </select>
             <button type="button" onclick="printOutput(generateHues(hex2rgbhsl(document.getElementById('hex').value), document.getElementById('gen-methods').value))" id="button-gen">GENERATE</button>
-            <button type="button" onclick="" id="button-rand">RANDOM</button>
+            <button type="button" onclick="printOutput(generateHues({'hsl': [Math.round(Math.random() * 360)]}, 'auto'))" id="button-rand">RANDOM</button>
         </form>
         <!--place where generated colors printed-->
         <div class="output-container col-center" id="output-container">
