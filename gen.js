@@ -87,7 +87,7 @@ function printOutput(func) {
             panel.append(para);
         })
         /* adjust details text color based on their background */
-        const fg = details.hsl.match(/\d+/g)[2] < 50 ? 'var(--light-neu)' : 'var(--dark-neu)';
+        const fg = details.hsl.match(/\d+/g)[2] < 30 ? 'var(--light-neu)' : 'var(--dark-neu)';
         Object.keys(document.getElementsByClassName(`details_color${n}`)).forEach(x => {
             document.getElementsByClassName(`details_color${n}`)[x].style.color = fg;
         })
