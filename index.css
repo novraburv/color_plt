@@ -64,8 +64,9 @@ select:hover {
   font-size: 0.8em;
 }
 .details-hex {
-  font-size: 1em;
+  font-size: 0.80em;
   font-weight: bold;
+  margin: 0;
   transform: rotate(270deg);
 }
 .details-rgb, .details-hsl {
@@ -91,6 +92,7 @@ select:hover {
 .output-container {
   gap: 0;
   grid-area: output;
+  width: 100%;
 }
 .output {
   display: flex;
@@ -102,7 +104,9 @@ select:hover {
 }
 @media (min-width: 768px) {
   .details-hex {
-    transform: unset;
+    font-size: 1em;
+    margin: 1em 0;
+    transform: unset;   
   }
   .details-rgb, .details-hsl {
     display: block;
