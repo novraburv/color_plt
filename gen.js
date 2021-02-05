@@ -1,4 +1,4 @@
-/* hex2rgbhsl generates RGB and HSL value from hex */
+// hex2rgbhsl generates RGB and HSL value from hex 
 function hex2rgbhsl(hex) {
     const RGB = hex.match(/[a-f\d]{2}/ig).map(x => {return parseInt(x, 16)});
     const [r, g, b] = RGB.map(x => {return x / 255});
@@ -23,8 +23,8 @@ function hex2rgbhsl(hex) {
         'hsl': HSL
     }
 }
-/* generateHues generates random hues based on 2 parameters, i.e. HSL hue as the base hue and chosen method.
-The output is an object that contains color codes from colorCodes parameter, method used by this function and generated hues */
+// generateHues generates random hues based on 2 parameters, i.e. HSL hue as the base hue and chosen method.
+// The output is an object that contains color codes from colorCodes parameter, method used by this function and generated hues 
 function generateHues(colorCodes, method) {
     const METHODS = {
         monochrome: [0],
@@ -53,45 +53,45 @@ function generateHues(colorCodes, method) {
     }
     return {colorCodes, 'method': method, 'genHues': method === 'auto' ? hues(BASE, KEYS[randomIndex(KEYS)]) : hues(BASE, method)};
 }
-/* random100 generates random number between 0 - 100 */
+// random100 generates random number between 0 - 100 
 function random100() {
     return Math.floor(Math.random() * 100);
 }
-/* its name explains */
+// its name explains 
 function printOutput(func) {
     const output = document.getElementById('output-container');
     let n = 1;
     output.innerHTML = '<!--area cleared-->';
     func.genHues.forEach(x => {
-        /* details object will be used later, to be shown in each panel */
+        // details object will be used later, to be shown in each panel 
         const details = {'hex': '', 'rgb':'', 'hsl': `hsl(${x}, ${random100()}%, ${random100()}%)`}
-        /* create divs with their respective id */
+        // create divs with their respective id 
         const color = document.createElement('div');
         color.setAttribute('class', 'output');
         color.setAttribute('id', `color${n}`);
         output.append(color);
-        /* select each div and fill it with color */
+        // select each div and fill it with color 
         const panel = document.getElementById(`color${n}`);
         panel.style.backgroundColor = `${details.hsl}`;
-        /* add hex and rgb codes to details */
+        // add hex and rgb codes to details 
         details.rgb = panel.style.backgroundColor;
         details.hex = details.rgb.match(/\d+/g).map(x => {
             const string = Number(x).toString(16);
             return string.length < 2 ? string + string : string;
         }).reduce((a, b) => {return a + b},'#');
-        /* write details to each panel */
+        // write details to each panel 
         Object.keys(details).forEach(x => {
             const para = document.createElement('p');
             para.setAttribute('class', `details details_color${n} details-${x}`);
             para.innerText = details[x].toUpperCase();
             panel.append(para);
         })
-        /* adjust details text color based on their background */
+        // adjust details text color based on their background 
         const fg = details.hsl.match(/\d+/g)[2] < 30 ? 'var(--light-neu)' : 'var(--dark-neu)';
         Object.keys(document.getElementsByClassName(`details_color${n}`)).forEach(x => {
             document.getElementsByClassName(`details_color${n}`)[x].style.color = fg;
         })
-        /* counter, put it on the end! */
+        // counter, put it on the end! 
         n++;
     })
 }
