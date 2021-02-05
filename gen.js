@@ -54,8 +54,8 @@ function generateHues(colorCodes, method) {
     return {colorCodes, 'method': method, 'genHues': method === 'auto' ? hues(BASE, KEYS[randomIndex(KEYS)]) : hues(BASE, method)};
 }
 // random100 generates random number between 0 - 100 
-function random100() {
-    return Math.floor(Math.random() * 100);
+function random(n) {
+    return Math.floor(Math.random() * n);
 }
 // its name explains 
 function printOutput(func) {
@@ -64,7 +64,7 @@ function printOutput(func) {
     output.innerHTML = '<!--area cleared-->';
     func.genHues.forEach(x => {
         // details object will be used later, to be shown in each panel 
-        const details = {'hex': '', 'rgb':'', 'hsl': `hsl(${x}, ${random100()}%, ${random100()}%)`}
+        const details = {'hex': '', 'rgb':'', 'hsl': `hsl(${x}, ${random(100)}%, ${random(100)}%)`}
         // create divs with their respective id 
         const color = document.createElement('div');
         color.setAttribute('class', 'output');

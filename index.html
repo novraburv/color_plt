@@ -34,7 +34,7 @@
                     onclick="printOutput(generateHues(hex2rgbhsl(document.getElementById('hex').value), document.getElementById('gen-methods').value))"
                     class="buttons" id="button-gen">GENERATE</button>
                 <button type="button"
-                    onclick="printOutput(generateHues({'hsl': [Math.round(Math.random() * 360)]}, 'auto'))"
+                    onclick="printOutput(generateHues({'hsl': [random(360)]}, 'auto'))"
                     class="buttons" id="button-rand">RANDOM</button>
             </form>
         </div>
